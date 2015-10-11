@@ -40,6 +40,7 @@
 #include "utils/constants.hpp"
 #include "utils/log.hpp"
 #include "utils/translation.hpp"
+#include <iostream>
 
 /** The constructor for a player kart.
  *  \param kart_name Name of the kart.
@@ -308,6 +309,15 @@ void PlayerController::skidBonusTriggered()
  */
 void PlayerController::update(float dt)
 {
+    for(unsigned int i=0; i<World::getWorld()->getNumKarts(); i++)
+    {
+        const AbstractKart* kart = World::getWorld()->getKart(i);
+        //m_world->getKart(i);
+        if(kart==m_kart) continue;   // skip player's kart
+        float distance = (m_kart->getXYZ() - kart->getXYZ()).length();
+        std::cout <<distance;
+    }
+    
     if (UserConfigParams::m_gamepad_debug)
     {
         // Print a dividing line so that it's easier to see which events
