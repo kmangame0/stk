@@ -315,7 +315,8 @@ void PlayerController::update(float dt)
         //m_world->getKart(i);
         if(kart==m_kart) continue;   // skip player's kart
         float distance = (m_kart->getXYZ() - kart->getXYZ()).length();
-        std::cout <<distance;
+        distance = std::to_string(distance);
+        stdout < distance;
     }
     
     if (UserConfigParams::m_gamepad_debug)
